@@ -42,7 +42,21 @@ On this experiment, we see tat the parallel algorithm have a bigger variance tha
 
 
 
+```{r}
+dataSeq = data_1[data$Type==" Sequential",]
+reg <- lm(data = dataSeq, dataSeq$Time~I(dataSeq$Size*log(dataSeq$Size)))
+summary(reg)
+```
 
+```{r}
+
+graph = ggplot(dataSeq, aes(x=Size, y=Time, color = factor(Type))) + geom_point()
+
+graph + geom_smooth(method = "lm", formula = y ~ I(x*log(x))) +  geom_smooth(method = "lm", formula = y ~ x, color="black") 
+```
+
+```{r}
+```
 
 
 #Furthermore, 
