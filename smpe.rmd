@@ -35,7 +35,7 @@ summary(reg)
 ```
 We need more data to make the conclusion. So we do some new experiments, and here is the result.
 
-#2 : Making new data.
+#2 : Take new data.
 We run the code provided in the archive to get more data, and add new size of sorted lists.
 ```{r}
 data_1 = read.csv("archive_quicksort/measurements_computer1.csv")
