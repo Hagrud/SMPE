@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 ```
 
-#1 : First look at the dataset.
+#1 : First look at the dataset
 We take the data provided by the teacher and plot it to have an overview.
 ```{r}
 data = read.csv("archive_quicksort/_measurements.csv")
@@ -35,7 +35,7 @@ summary(reg)
 ```
 We need more data to make the conclusion. So we do some new experiments, and here is the result.
 
-#2 : Take new data.
+#2 : Take new data
 We run the code provided in the archive to get more data, and add new size of sorted lists.
 ```{r}
 data_1 = read.csv("archive_quicksort/measurements_computer1.csv")
@@ -43,7 +43,7 @@ data_1 = read.csv("archive_quicksort/measurements_computer1.csv")
 ggplot(data_1, aes(x=Size, y=Time, color = factor(Type))) + geom_point()
 ```
 
-##2.1 : Data Analysis.
+##2.1 : Data Analysis
 On this experiment, we see that the parallel algorithm have the bigger variance than the others. We can observe that comparing to the first experiment, for the large n, parallel algorithm runs much faster than the two others. But in this experiment, it runs very slow comparing to the two others. 
 
 ```{r}
@@ -79,7 +79,7 @@ The built-in method give almost the same results that the sequential one, can we
 dataPar_1 = data_1[data$Type==" Parallel",]
 reg <- lm(data = dataPar_1, dataPar_1$Time~I(dataPar_1$Size*log(dataPar_1$Size)))
 summary(reg)
-graph = ggplot(dataPar_1, aes(x=Size, y=Time, color = factor(Type))) + geom_point(color="green")
+graph = ggplot(dataPar_1, aes(x=Size, y=Time, color = factor(Type))) + geom_point(color="green4")
 
 graph + geom_smooth(method = "lm", formula = y ~ I(x*log(x)), color="black")
 ```
@@ -89,7 +89,7 @@ This regression line is y = O(x*log(x)), but it doesn't match with the data. So,
 ```{r}
 reg <- lm(data = dataPar_1, dataPar_1$Time~I(log(dataPar_1$Size)))
 summary(reg)
-graph = ggplot(dataPar_1, aes(x=Size, y=Time, color = factor(Type))) + geom_point(color="green")
+graph = ggplot(dataPar_1, aes(x=Size, y=Time, color = factor(Type))) + geom_point(color="green4")
 
 graph + geom_smooth(method = "lm", formula = y ~ log(x), color="black")
 ```
